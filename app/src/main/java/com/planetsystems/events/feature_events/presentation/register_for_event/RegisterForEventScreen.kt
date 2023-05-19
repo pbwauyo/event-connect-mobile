@@ -28,7 +28,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
@@ -116,7 +115,7 @@ fun RegisterForEventScreen(
             )
 
             CustomTextField(
-                label = "First Name",
+                label = "Given Name",
                 value = firstName,
                 onValueChange = onFirstNameChange,
                 modifier = modifier,
@@ -125,7 +124,7 @@ fun RegisterForEventScreen(
             )
 
             CustomTextField(
-                label = "Last Name",
+                label = "Surname",
                 value = lastName,
                 onValueChange = onLastNameChange,
                 modifier = modifier,
@@ -180,7 +179,7 @@ fun RegisterForEventScreen(
 
             CustomButton(
                 modifier = buttonModifier,
-                label = "Register for Event",
+                label = "Submit",
                 onClick = onRegisterBtnClicked
             )
         }
@@ -232,8 +231,19 @@ private fun getLastName(strings: List<String>): String {
 }
 
 private fun getGender(strings: List<String>): String {
-    val gender = strings.firstOrNull { it == "M" || it == "F" }
-    return gender ?: "N/A"
+    return when (strings.firstOrNull { it == "M" || it == "F" }) {
+        "M" -> {
+            "Male"
+        }
+
+        "F" -> {
+            "Female"
+        }
+
+        else -> {
+            "N/A"
+        }
+    }
 }
 
 private fun getNin(strings: List<String>): String {
