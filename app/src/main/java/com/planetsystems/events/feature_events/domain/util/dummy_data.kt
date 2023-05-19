@@ -151,7 +151,8 @@ val dummyAttendees = listOf(
         title = "Mr.",
         organisation = "World Vision",
         nin = "CMDKDKEUE9393E3",
-        phone = "0700908765"
+        phone = "0700908765",
+        gender = "M"
     ),
     Attendee(
         firstName = "Sarah",
@@ -159,7 +160,8 @@ val dummyAttendees = listOf(
         title = "Ms.",
         organisation = "Google",
         nin = "CNJDJD303JEJ3ME",
-        phone = "0786543776"
+        phone = "0786543776",
+        gender = "M"
     ),
     Attendee(
         firstName = "Sam",
@@ -167,7 +169,8 @@ val dummyAttendees = listOf(
         title = "Dr.",
         organisation = "World Bank",
         nin = "CNDJDJIE9E3JEJE",
-        phone = "0700376538"
+        phone = "0700376538",
+        gender = "M"
     ),
     Attendee(
         firstName = "Fredrick",
@@ -175,7 +178,8 @@ val dummyAttendees = listOf(
         title = "Mr.",
         organisation = "Planet Systems",
         nin = "CNDJDI93939393D",
-        phone = "0766543973"
+        phone = "0766543973",
+        gender = "M"
     ),
     Attendee(
         firstName = "Kylian",
@@ -183,7 +187,8 @@ val dummyAttendees = listOf(
         title = "Mr.",
         organisation = "PSG",
         nin = "CMDKIEIE9393EEK",
-        phone = "0799876539"
+        phone = "0799876539",
+        gender = "M"
     ),
     Attendee(
         firstName = "Pascal",
@@ -191,7 +196,8 @@ val dummyAttendees = listOf(
         title = "Mr.",
         organisation = "Makerere University",
         nin = "CMDKDIIE9393JFR",
-        phone = "0788764509"
+        phone = "0788764509",
+        gender = "M"
     ),
     Attendee(
         firstName = "Elizabeth",
@@ -199,7 +205,8 @@ val dummyAttendees = listOf(
         title = "Ms.",
         organisation = "Andela",
         nin = "CFDUEEKEOEJEHEE",
-        phone = "0798765443"
+        phone = "0798765443",
+        gender = "M"
     ),
     Attendee(
         firstName = "Olivier",
@@ -207,6 +214,7 @@ val dummyAttendees = listOf(
         title = "Mr.",
         organisation = "PSG",
         nin = "CMDKDIE93IK3JE",
-        phone = "0799826358"
+        phone = "0799826358",
+        gender = "M"
     )
 )

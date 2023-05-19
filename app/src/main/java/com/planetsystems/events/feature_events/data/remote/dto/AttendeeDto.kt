@@ -1,14 +1,13 @@
-package com.planetsystems.events.feature_events.domain.model
+package com.planetsystems.events.feature_events.data.remote.dto
 
-data class Attendee(
+data class AttendeeDto(
+    val id: Int,
     val firstName: String,
     val lastName: String,
-    val gender: String,
     val title: String,
     val organisation: String,
     val nin: String,
     val phone: String,
     val receivedTransport: Boolean = false,
-    val receivedLunch: Boolean = false,
-    val eventId: Int = 0
+    val receivedLunch: Boolean = false
 )

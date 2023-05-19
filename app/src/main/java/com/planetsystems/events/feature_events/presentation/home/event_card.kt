@@ -52,8 +52,8 @@ fun EventCard(event: Event, onJoinClick: () -> Unit, onCardClick: () -> Unit) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Box {
                 Image(
-                    painterResource(id = event.imageRes ?: R.drawable.wb_youth_summit),
-                    contentDescription = "Youth Summit",
+                    painterResource(id = R.drawable.world_vision),
+                    contentDescription = "World Vision",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -72,7 +72,7 @@ fun EventCard(event: Event, onJoinClick: () -> Unit, onCardClick: () -> Unit) {
                     colors = ButtonDefaults.buttonColors(containerColor = Orange)
                 ) {
                     Icon(painterResource(id = R.drawable.playlist_add), contentDescription = null)
-                    Text(text = "Join", modifier = Modifier.padding(start = 4.dp))
+                    Text(text = "Register", modifier = Modifier.padding(start = 4.dp))
                 }
             }
 
@@ -104,14 +104,14 @@ fun EventCard(event: Event, onJoinClick: () -> Unit, onCardClick: () -> Unit) {
                 ) {
                     Row(modifier = Modifier.padding(top = 8.dp)) {
                         Image(
-                            painterResource(id = R.drawable.wb_logo_3),
+                            painterResource(id = R.drawable.world_vision_logo),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(24.dp)
                         )
 
                         Text(
-                            text = event.organizerName,
+                            text = event.organizerName ?: "World Vision",
                             fontSize = 12.sp,
                             modifier = Modifier
                                 .padding(start = 2.dp)

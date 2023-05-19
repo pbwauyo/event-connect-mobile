@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433057423586",
+    "project_id": "event-connect-43b33",
+    "storage_bucket": "event-connect-43b33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433057423586:android:0310c9301b4a47abdf7ebb",
+        "android_client_info": {
+          "package_name": "com.planetsystems.events"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433057423586-ijm8p19ktousbtc5geul8omu4upcv12u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq3-jrJoX2jzZ0OzX55_GuJdztfPFCTHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433057423586-ijm8p19ktousbtc5geul8omu4upcv12u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

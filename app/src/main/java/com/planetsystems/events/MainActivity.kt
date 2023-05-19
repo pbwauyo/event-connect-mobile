@@ -11,17 +11,24 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.planetsystems.events.feature_auth.login.LoginScreen
 import com.planetsystems.events.feature_auth.signup.SignUpScreen
-import com.planetsystems.events.feature_events.domain.util.dummyEvents
-import com.planetsystems.events.feature_events.presentation.register_for_event.RegisterForEventScreen
+import com.planetsystems.events.feature_events.presentation.event_details.EventDetailsScreen
 import com.planetsystems.events.feature_events.presentation.home.HomeScreen
+import com.planetsystems.events.feature_events.presentation.register_for_event.RegisterForEventScreen
+import com.planetsystems.events.feature_events.presentation.register_for_event.RegisterForEventViewModel
 import com.planetsystems.events.ui.theme.EventsTheme
 import com.planetsystems.events.util.Screen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +41,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.LoginScreen.route
+                        startDestination = Screen.HomeScreen.route
                     ) {
                         composable(Screen.LoginScreen.route) {
                             var email by remember {
@@ -108,56 +115,55 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable(Screen.HomeScreen.route) {
+//                            val eventViewModel: EventViewModel = hiltViewModel()
+
                             HomeScreen(
-                                events = dummyEvents,
+//                                events = dummyEvents,
                                 onJoinClick = {
-                                    navController.navigate(Screen.RegisterForEventScreen.route)
+                                    navController.navigate(Screen.RegisterForEventScreen.route + "/${it.id}")
                                 },
-                                onCardClick = {}
+                                onCardClick = {
+
+                                }
                             )
                         }
 
-                        composable(Screen.RegisterForEventScreen.route) {
-                            var fName by remember {
-                                mutableStateOf("")
-                            }
+                        composable(
+                            route = Screen.RegisterForEventScreen.route + "/{eventId}",
+                            arguments = listOf(navArgument("eventId") { type = NavType.IntType })
+                        ) {
+                            val viewModel: RegisterForEventViewModel = hiltViewModel()
 
-                            var lName by remember {
-                                mutableStateOf("")
-                            }
-
-                            var title by remember {
-                                mutableStateOf("")
-                            }
-
-                            var organisation by remember {
-                                mutableStateOf("")
-                            }
-
-                            var nin by remember {
-                                mutableStateOf("")
-                            }
-
-                            var phone by remember {
-                                mutableStateOf("")
-                            }
-
+                            val eventId = it.arguments?.getInt("eventId") ?: 0
                             RegisterForEventScreen(
-                                firstName = fName,
-                                onFirstNameChange = { fName = it },
-                                lastName = lName,
-                                onLastNameChange = { lName = it },
-                                title = title,
-                                onTitleChange = { title = it },
-                                organisation = organisation,
-                                onOrganisationChange = { organisation = it },
-                                nin = nin,
-                                onNinChange = { nin = it },
-                                phone = phone,
-                                onPhoneChange = { phone = it },
-                                onRegisterBtnClicked = {}
+                                registerForEventViewModel = viewModel,
+                                firstName = viewModel.fName,
+                                onFirstNameChange = { fName -> viewModel.fName = fName },
+                                lastName = viewModel.lName,
+                                onLastNameChange = { lName -> viewModel.lName = lName },
+                                gender = viewModel.gender,
+                                onGenderChange = { gender -> viewModel.gender = gender },
+                                title = viewModel.title,
+                                onTitleChange = { title -> viewModel.title = title },
+                                organisation = viewModel.organisation,
+                                onOrganisationChange = { organisation ->
+                                    viewModel.organisation = organisation
+                                },
+                                nin = viewModel.nin,
+                                onNinChange = { nin -> viewModel.nin = nin },
+                                phone = viewModel.phone,
+                                onPhoneChange = { phone -> viewModel.phone = phone },
+                                onRegisterBtnClicked = {
+                                    viewModel.registerForEvent(eventId)
+                                }
                             )
                         }
+
+//                        composable(
+//                            route = Screen.EventDetailsScreen.route
+//                        ){
+//                            EventDetailsScreen(event = )
+//                        }
                     }
                 }
             }

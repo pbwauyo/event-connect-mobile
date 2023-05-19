@@ -1,6 +1,7 @@
 package com.planetsystems.events.feature_events.domain.model
 
 import androidx.annotation.DrawableRes
+import com.google.gson.annotations.SerializedName
 
 data class Event(
     val id: Int,
@@ -11,7 +12,7 @@ data class Event(
     val time: String,
     val location: String,
     val description: String,
-    val attendance: String,
-    val organizerName: String,
-    val organizerImage: String
+    @SerializedName("attendees_count") val attendance: String,
+    val organizerName: String?,
+    val organizerImage: String?
 )
